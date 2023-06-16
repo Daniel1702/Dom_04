@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciando com DOM 3</title>
+</head>
+<body>
+     <!-- colete do usuário (usando input de data) e
+    altere a cor do "quadrado" dessa data no calendário
+    dinâmicamente. Por exemplo, se o usuário escolher
+    01/10/2022 - o quadrado com o dia 01 deve mudar de cor. -->
+
+    <header>
+        <h1 class="titulo">Calendário</h1>
+    </header>
+    <!-- Coletar dado do usuário -->
+    <input type="date" id="dia" placeholder="Escolha uma data"> 
+   <!-- Criação da tabela -->
+    <table class="calendar" id="calendar">
+        <thead>
+            <!-- Coluna -->
+            <tr>
+                <th>Dom</th>
+                <th>Seg</th>
+                <th>Ter</th>
+                <th>Qua</th>
+                <th>Qui</th>
+                <th>Sex</th>
+                <th>Sab</th>
+                <th>Dom</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Linha 01 -->
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+            <!-- Linha 02 -->
+            <tr>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+            </tr>
+            <!-- Linha 03 -->
+            <tr>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+            </tr>
+            <!-- Linha 04 -->
+            <tr>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>29</td>
+                <td>30</td>
+            </tr>
+            <!-- Linha 05 -->
+            <tr>
+                <td>31</td>
+        </tbody>
+    </table>
+    <!-- Estilização - CSS INTERNO -->
+    <style>
+        body {
+            font-size: 17px;
+            font-family: sans-serif;
+        }
+        .titulo {
+            text-align: center;
+            background-color: rgba(252, 166, 55, 0.692);
+            border: 1px solid black;
+        }
+        .titulo:hover {
+           background-color:  rgba(231, 112, 14, 0.986);
+        }
+        .calendar th {
+            background-color: aquamarine;
+        }
+        .calendar th, td {
+            border: solid 1px black;
+            width: 40px;
+            height: 30px;
+        }
+        .calendar {
+            text-align: center;
+        }
+
+        .calendar th:hover, td:hover {
+            border: solid 1px  rgb(255, 17, 17);
+        }
+    </style>
+<!-- JavaScript Interno -->
+<script>
+    var diaInput = document.querySelector('#dia');
+    var quadrados = document.querySelectorAll('#calendar td');
+
+    diaInput.addEventListener('input', function() {
+        var dataSelecionada = new Date(diaInput.value);
+        var diaSelecionado = dataSelecionada.getDate();
+
+        // Resetar a cor de todos os quadrados
+        for (var i = 0; i < quadrados.length; i++) {
+            quadrados[i].style.backgroundColor = 'antiquewhite';
+        }
+
+        // Alterar a cor do quadrado correspondente ao dia selecionado
+        quadrados[diaSelecionado + 3].style.backgroundColor = 'red';
+    });
+</script>
+</body>
+</html>
